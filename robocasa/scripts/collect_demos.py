@@ -343,6 +343,8 @@ if __name__ == "__main__":
         default=None,
         help="In kitchen environments, either the name of a group to sample object from or path to an .xml file",
     )
+    #parser.add_argument("--allowed_instance", type=str, default=None)
+
 
     parser.add_argument(
         "--camera",
@@ -359,7 +361,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--device",
         type=str,
-        default="spacemouse",
+        default="keyboard",
         choices=["keyboard", "keyboardmobile", "spacemouse", "dummy"],
     )
     parser.add_argument(
@@ -383,9 +385,10 @@ if __name__ == "__main__":
         "--max_fr", default=30, type=int, help="If specified, limit the frame rate"
     )
 
-    parser.add_argument("--layout", type=int, nargs="+", default=-1)
+    parser.add_argument("--layout", type=int, nargs="+", default=0)
     parser.add_argument(
-        "--style", type=int, nargs="+", default=[0, 1, 2, 3, 4, 5, 6, 7, 8, 11]
+        "--style", type=int, nargs="+", default=[0]
+        # "--style", type=int, nargs="+", default=[0, 1, 2, 3, 4, 5, 6, 7, 8, 11]
     )
     parser.add_argument("--generative_textures", action="store_true")
     args = parser.parse_args()
@@ -461,6 +464,7 @@ if __name__ == "__main__":
         use_camera_obs=False,
         control_freq=20,
         renderer=args.renderer,
+        #allowed_instance=args.allowed_instance,
     )
 
     # Wrap this with visualization wrapper

@@ -326,9 +326,11 @@ if __name__ == "__main__":
             filepath = args.mjcf
         else:
             mjcf_kwargs, sampled_object_info = sample_kitchen_object(
-                groups="all",
+                groups="brown_cuboid",
+                # groups="all",
                 obj_registries=obj_registries,
             )
+            # filepath = "robocasa/robocasa/models/assets/objects/objaverse/brown_cuboid/model.xml"
             filepath = sampled_object_info["mjcf_path"]
             cat = sampled_object_info["cat"].replace("_", " ")
             aigen = "aigen_objs" in filepath

@@ -6,6 +6,54 @@ BASE_ASSET_ZOO_PATH = os.path.join(robocasa.models.assets_root, "objects")
 
 # Constant that contains information about each object category. These will be used to generate the ObjCat classes for each category
 OBJ_CATEGORIES = dict(
+    brown_cuboid = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/brown_cuboid"],
+            scale=1.0,
+        ),
+    ),
+    brown_cylinder = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/brown_cylinder"],
+            scale=1.0,
+        ),
+    ),
+    green_cylinder = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/green_cylinder"],
+            scale=1.0,
+        ),
+    ),
+    red_cuboid = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/red_cuboid"],
+            scale=1.0,
+        ),
+    ),
     liquor=dict(
         types=("drink", "alcohol"),
         graspable=True,
@@ -499,6 +547,32 @@ OBJ_CATEGORIES = dict(
         objaverse=dict(),
     ),
     cup=dict(
+        types=("receptacle", "stackable"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=False,
+        freezable=False,
+        aigen=dict(
+            scale=1.35,
+        ),
+        objaverse=dict(),
+    ),
+    cup_2_only=dict(
+        types=("receptacle", "stackable"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=False,
+        freezable=False,
+        aigen=dict(
+            scale=1.35,
+        ),
+         objaverse=dict(
+            model_folders=["objaverse/cup_2_only/cup_2"],
+         ),
+    ),
+    cup_copy=dict(
         types=("receptacle", "stackable"),
         graspable=True,
         washable=True,
@@ -2078,6 +2152,7 @@ OBJ_GROUPS["food"] = get_cats_by_type(
         "bread_food",
         "pastry",
         "cooked_food",
+        "lego",
     ]
 )
 OBJ_GROUPS["in_container"] = get_cats_by_type(
@@ -2090,6 +2165,7 @@ OBJ_GROUPS["in_container"] = get_cats_by_type(
         "bread_food",
         "pastry",
         "cooked_food",
+        "lego",
     ]
 )
 
@@ -2112,3 +2188,11 @@ OBJ_GROUPS["food_set1"] = [
 ]
 OBJ_GROUPS["group1"] = ["apple", "carrot", "banana", "bowl", "can"]
 OBJ_GROUPS["container_set2"] = ["plate", "bowl"]
+
+OBJ_GROUPS["brown_cuboid"] = ["brown_cuboid"]
+OBJ_GROUPS["brown_cylinder"] = ["brown_cylinder"]
+OBJ_GROUPS["green_cylinder"] = ["green_cylinder"]
+OBJ_GROUPS["red_cuboid"] = ["red_cuboid"]
+
+#OBJ_GROUPS["lego"] = ["brown_cuboid","red_cuboid", "brown_cylinder", "green_cylinder"]
+#OBJ_GROUPS["cup_2_only"] = ["cup_2_only"]

@@ -166,6 +166,7 @@ def sample_kitchen_object(
     split=None,
     max_size=(None, None, None),
     object_scale=None,
+    pos=None,
 ):
     """
     Sample a kitchen object from the specified groups and within max_size bounds.
@@ -217,6 +218,8 @@ def sample_kitchen_object(
             obj_registries=obj_registries,
             split=split,
             object_scale=object_scale,
+            pos=pos,
+            #allowed_instance=None,
         )
 
         # check if object size is within bounds
@@ -250,8 +253,11 @@ def sample_kitchen_object(
             if max_size[i] is not None and obj_size[i] > max_size[i]:
                 valid_object_sampled = False
 
-    return mjcf_kwargs, info
+    if pos is not None:
+        mjcf_kwargs["pos"] = pos
+        #print(f"✅ 已覆蓋物體位置為 {pos}")
 
+    return mjcf_kwargs, info
 
 def sample_kitchen_object_helper(
     groups,
@@ -265,6 +271,8 @@ def sample_kitchen_object_helper(
     obj_registries=("objaverse",),
     split=None,
     object_scale=None,
+    pos=None,
+    #allowed_instance=None,
 ):
     """
     Helper function to sample a kitchen object.
@@ -300,6 +308,8 @@ def sample_kitchen_object_helper(
         dict: info about the sampled object - the path of the mjcf, groups which the object's category belongs to, the category of the object
               the sampling split the object came from, and the groups the object was sampled from
     """
+
+    
     if rng is None:
         rng = np.random.default_rng()
 
@@ -377,8 +387,9 @@ def sample_kitchen_object_helper(
                     continue
 
                 valid_categories.append(cat)
-
+        
         cat = rng.choice(valid_categories)
+        # print("[DEBUG] Sampled category (cat):", cat) # changed 
 
         choices = {reg: [] for reg in obj_registries}
 
@@ -406,6 +417,8 @@ def sample_kitchen_object_helper(
         )
 
         mjcf_path = rng.choice(choices[chosen_reg])
+        # print("[DEBUG] MJCF path selected:", mjcf_path) # changed
+
         mjcf_kwargs = OBJ_CATEGORIES[cat][chosen_reg].get_mjcf_kwargs()
         mjcf_kwargs["mjcf_path"] = mjcf_path
 

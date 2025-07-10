@@ -242,6 +242,18 @@ class PnPCabToCounter(PnP):
 
         return cfgs
 
+    def check_pick(self):
+        """
+        Check if the pick action is valid for the cabinet to counter pick and place task.
+        Checks if the object is inside the cabinet and the gripper is far from the object.
+
+        Returns:
+            bool: True if the pick action is valid, False otherwise
+        """
+        obj_inside_cab = OU.obj_inside_of(self, "obj", self.cab)
+        gripper_obj_far = OU.gripper_obj_far(self)
+        return obj_inside_cab and gripper_obj_far
+
     def _check_success(self):
         """
         Check if the cabinet to counter pick and place task is successful.
@@ -906,3 +918,95 @@ class PnPStoveToCounter(PnP):
         gripper_obj_far = OU.gripper_obj_far(self)
 
         return obj_in_container and gripper_obj_far
+
+class PnPCounterToCounter(PnP):
+    """
+    Class encapsulating the atomic stove to counter pick and place task
+    """
+
+    def __init__(self, obj_groups="food", *args, **kwargs):
+        super().__init__(obj_groups=obj_groups, *args, **kwargs)
+
+    def _setup_kitchen_references(self):
+        """
+        Setup the kitchen references for the stove to counter pick and place task:
+        The counter to place object/container on and the stove to initialize it/the pan on
+        """
+        super()._setup_kitchen_references()
+        self.sink = self.register_fixture_ref(
+            "sink",
+            dict(id=FixtureType.SINK),
+        )
+        self.counter = self.register_fixture_ref(
+            "counter", dict(id=FixtureType.COUNTER, ref=self.sink, size=[0.30, 0.40])
+        )
+        self.init_robot_base_pos = self.counter
+
+    def get_ep_meta(self):
+        """
+        Get the episode metadata for the stove to counter pick and place task.
+        This includes the language description of the task.
+        """
+        ep_meta = super().get_ep_meta()
+        obj_lang = self.get_obj_lang()
+        ep_meta[
+            "lang"
+        ] = f"Pick the {obj_lang} from the plate and place it on the counter. \nIf the demo does not end, remember to move the robot arm further away"
+        
+        return ep_meta
+
+    def _get_obj_cfgs(self):
+        """
+        Get the object configurations for the counter to counter pick and place task.
+        Puts the target object on the plate on the counter. 
+        Puts a distractor object on the counter.
+        """
+        cfgs = []
+
+        cfgs.append(
+            dict(
+                name="obj",
+                obj_groups=self.obj_groups,
+                exclude_obj_groups=self.exclude_obj_groups,
+                graspable=True,
+                max_size=(0.15, 0.15, None),
+                placement=dict(
+                    fixture=self.counter,
+                    size=(0.05, 0.05),
+                    ensure_object_boundary_in_range=False,
+                    try_to_place_in="container",
+                ),
+            )
+        )
+
+        # 增加障礙物
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.sink,
+        #                 loc="left_right",
+        #             ),
+        #             size=(0.30, 0.30),
+        #             pos=("ref", -1.0),
+        #             offset=(0.0, 0.30),
+        #         ),
+        #     )
+        # )
+
+        return cfgs
+
+    def _check_success(self):
+        """
+        Check if the counter to counter pick and place task is successful.
+        Checks if the object is not in the container on the counter, and the gripper far from the object.
+
+        Returns:
+            bool: True if the task is successful, False otherwise
+        """
+        gripper_obj_far = OU.gripper_obj_far(self)
+        obj_on_counter = OU.check_obj_fixture_contact(self, "obj", self.counter)
+        return obj_on_counter and gripper_obj_far

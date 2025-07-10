@@ -570,6 +570,10 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
         else:
             obj_groups = cfg.get("obj_groups", "all")
             exclude_obj_groups = cfg.get("exclude_obj_groups", None)
+        
+        if cfg.get("type", "") == "cup":
+            cfg["pos"] = [0.2, -0.2, 0.83]
+        
         object_kwargs, object_info = self.sample_object(
             obj_groups,
             exclude_groups=exclude_obj_groups,
@@ -580,6 +584,7 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
             freezable=cfg.get("freezable", None),
             max_size=cfg.get("max_size", (None, None, None)),
             object_scale=cfg.get("object_scale", None),
+            pos=cfg.get("pos", None),
         )
         info = object_info
 
@@ -1410,6 +1415,8 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
         obj_registries=None,
         max_size=(None, None, None),
         object_scale=None,
+        pos=None,
+        #allowed_instance=None,
     ):
         """
         Sample a kitchen object from the specified groups and within max_size bounds.
