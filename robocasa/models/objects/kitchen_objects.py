@@ -572,18 +572,6 @@ OBJ_CATEGORIES = dict(
             model_folders=["objaverse/cup_2_only/cup_2"],
          ),
     ),
-    cup_copy=dict(
-        types=("receptacle", "stackable"),
-        graspable=True,
-        washable=True,
-        microwavable=True,
-        cookable=False,
-        freezable=False,
-        aigen=dict(
-            scale=1.35,
-        ),
-        objaverse=dict(),
-    ),
     cupcake=dict(
         types=("sweets"),
         graspable=True,

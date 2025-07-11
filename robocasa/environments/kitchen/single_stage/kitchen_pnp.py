@@ -365,6 +365,18 @@ class PnPCounterToSink(PnP):
 
         return cfgs
 
+    def check_pick(self):
+        """
+        Check if the pick action is valid for the counter to sink pick and place task.
+        Checks if the object is on the counter and the gripper is far from the object.
+
+        Returns:
+            bool: True if the pick action is valid, False otherwise
+        """
+        obj_on_counter = OU.check_obj_fixture_contact(self, "obj", self.counter)
+        gripper_obj_far = OU.gripper_obj_far(self)
+        return obj_on_counter and gripper_obj_far
+
     def _check_success(self):
         """
         Check if the counter to sink pick and place task is successful.

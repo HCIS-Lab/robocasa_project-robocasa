@@ -409,12 +409,24 @@ def sample_kitchen_object_helper(
                 else:
                     raise ValueError
             choices[reg] = reg_choices
-
+        """debug
+        counts = np.array([len(choices[reg]) for reg in obj_registries])
+        total = counts.sum()
+        if total == 0:
+            print("********** DEBUG DUMP **********")
+            print(f"cat = {cat}")
+            print(f"obj_registries = {obj_registries}")
+            print(f"choices = {choices}")
+            print(f"groups = {groups}")
+            print(f"split = {split}")
+            raise ValueError("No available objects to sample from! Check your group/category/split.")
+        """
         chosen_reg = rng.choice(
             obj_registries,
             p=np.array([len(choices[reg]) for reg in obj_registries])
             / sum(len(choices[reg]) for reg in obj_registries),
         )
+
 
         mjcf_path = rng.choice(choices[chosen_reg])
         # print("[DEBUG] MJCF path selected:", mjcf_path) # changed
