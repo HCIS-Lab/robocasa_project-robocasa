@@ -6,6 +6,126 @@ BASE_ASSET_ZOO_PATH = os.path.join(robocasa.models.assets_root, "objects")
 
 # Constant that contains information about each object category. These will be used to generate the ObjCat classes for each category
 OBJ_CATEGORIES = dict(
+    pnp_banana = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_banana"],
+            scale=1.0,
+        ),
+    ),
+    pnp_bell_pepper = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_bell_pepper"],
+            scale=1.0,
+        ),
+    ),
+    pnp_bowl = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_bowl"],
+            scale=1.0,
+        ),
+    ),
+    pnp_can = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_can"],
+            scale=1.0,
+        ),
+    ),
+    pnp_cheese = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_cheese"],
+            scale=1.0,
+        ),
+    ),
+    pnp_cupcake = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_cupcake"],
+            scale=1.0,
+        ),
+    ),
+    pnp_egg = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_egg"],
+            scale=1.0,
+        ),
+    ),
+    pnp_spray_bottle = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_spray_bottle"],
+            scale=1.0,
+        ),
+    ),
+    pnp_water_bottle = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_water_bottle"],
+            scale=1.0,
+        ),
+    ),
+    pnp_mug = dict(
+        types=("tool", "lego"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        objaverse=dict(
+            model_folders=["objaverse/pnp_mug"],
+            scale=1.0,
+        ),
+    ),
     brown_cuboid = dict(
         types=("tool", "lego"),
         graspable=True,
@@ -2181,6 +2301,18 @@ OBJ_GROUPS["brown_cuboid"] = ["brown_cuboid"]
 OBJ_GROUPS["brown_cylinder"] = ["brown_cylinder"]
 OBJ_GROUPS["green_cylinder"] = ["green_cylinder"]
 OBJ_GROUPS["red_cuboid"] = ["red_cuboid"]
+OBJ_GROUPS["pnp_mug"] = ["pnp_mug"]
+OBJ_GROUPS["pnp_banana"] = ["pnp_banana"]
+OBJ_GROUPS["pnp_bell_pepper"] = ["pnp_bell_pepper"]
+OBJ_GROUPS["pnp_bowl"] = ["pnp_bowl"]
+OBJ_GROUPS["pnp_can"] = ["pnp_can"]
+OBJ_GROUPS["pnp_cheese"] = ["pnp_cheese"]
+OBJ_GROUPS["pnp_cupcake"] = ["pnp_cupcake"]
+OBJ_GROUPS["pnp_egg"] = ["pnp_egg"]
+OBJ_GROUPS["pnp_spray_bottle"] = ["pnp_spray_bottle"]
+OBJ_GROUPS["pnp_water_bottle"] = ["pnp_water_bottle"]
+
+
 
 #OBJ_GROUPS["lego"] = ["brown_cuboid","red_cuboid", "brown_cylinder", "green_cylinder"]
 #OBJ_GROUPS["cup_2_only"] = ["cup_2_only"]
