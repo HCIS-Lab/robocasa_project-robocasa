@@ -90,7 +90,7 @@ OBJ_CATEGORIES = dict(
             scale=1.0,
         ),
     ),
-    pnp_spray_bottle = dict(
+    pnp_pan = dict(
         types=("tool", "lego"),
         graspable=True,
         washable=True,
@@ -98,7 +98,7 @@ OBJ_CATEGORIES = dict(
         cookable=True,
         freezable=True,
         objaverse=dict(
-            model_folders=["objaverse/pnp_spray_bottle"],
+            model_folders=["objaverse/pnp_pan"],
             scale=1.0,
         ),
     ),
@@ -2309,7 +2309,7 @@ OBJ_GROUPS["pnp_can"] = ["pnp_can"]
 OBJ_GROUPS["pnp_cheese"] = ["pnp_cheese"]
 OBJ_GROUPS["pnp_cupcake"] = ["pnp_cupcake"]
 OBJ_GROUPS["pnp_egg"] = ["pnp_egg"]
-OBJ_GROUPS["pnp_spray_bottle"] = ["pnp_spray_bottle"]
+OBJ_GROUPS["pnp_pan"] = ["pnp_pan"]
 OBJ_GROUPS["pnp_water_bottle"] = ["pnp_water_bottle"]
 
 
