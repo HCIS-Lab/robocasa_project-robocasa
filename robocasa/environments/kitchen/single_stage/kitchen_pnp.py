@@ -96,33 +96,33 @@ class PnPCounterToCab(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.cab,
-                    ),
-                    size=(1.0, 0.30),
-                    pos=(0.0, 1.0),
-                    offset=(0.0, -0.05),
-                ),
-            )
-        )
-        cfgs.append(
-            dict(
-                name="distr_cab",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.cab,
-                    size=(1.0, 0.20),
-                    pos=(0.0, 1.0),
-                    offset=(0.0, 0.0),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.cab,
+        #             ),
+        #             size=(1.0, 0.30),
+        #             pos=(0.0, 1.0),
+        #             offset=(0.0, -0.05),
+        #         ),
+        #     )
+        # )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_cab",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.cab,
+        #             size=(1.0, 0.20),
+        #             pos=(0.0, 1.0),
+        #             offset=(0.0, 0.0),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
@@ -212,33 +212,33 @@ class PnPCabToCounter(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.cab,
-                    ),
-                    size=(1.0, 0.30),
-                    pos=(0.0, 1.0),
-                    offset=(0.0, -0.05),
-                ),
-            )
-        )
-        cfgs.append(
-            dict(
-                name="distr_cab",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.cab,
-                    size=(1.0, 0.20),
-                    pos=(0.0, 1.0),
-                    offset=(0.0, 0.0),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.cab,
+        #             ),
+        #             size=(1.0, 0.30),
+        #             pos=(0.0, 1.0),
+        #             offset=(0.0, -0.05),
+        #         ),
+        #     )
+        # )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_cab",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.cab,
+        #             size=(1.0, 0.20),
+        #             pos=(0.0, 1.0),
+        #             offset=(0.0, 0.0),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
@@ -334,34 +334,34 @@ class PnPCounterToSink(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.sink,
-                        loc="left_right",
-                    ),
-                    size=(0.30, 0.30),
-                    pos=("ref", -1.0),
-                    offset=(0.0, 0.30),
-                ),
-            )
-        )
-        cfgs.append(
-            dict(
-                name="distr_sink",
-                obj_groups="all",
-                washable=True,
-                placement=dict(
-                    fixture=self.sink,
-                    size=(0.25, 0.25),
-                    pos=(0.0, 1.0),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.sink,
+        #                 loc="left_right",
+        #             ),
+        #             size=(0.30, 0.30),
+        #             pos=("ref", -1.0),
+        #             offset=(0.0, 0.30),
+        #         ),
+        #     )
+        # )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_sink",
+        #         obj_groups="all",
+        #         washable=True,
+        #         placement=dict(
+        #             fixture=self.sink,
+        #             size=(0.25, 0.25),
+        #             pos=(0.0, 1.0),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
@@ -469,22 +469,22 @@ class PnPSinkToCounter(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.sink,
-                        loc="left_right",
-                    ),
-                    size=(0.30, 0.30),
-                    pos=("ref", -1.0),
-                    offset=(0.0, 0.30),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.sink,
+        #                 loc="left_right",
+        #             ),
+        #             size=(0.30, 0.30),
+        #             pos=("ref", -1.0),
+        #             offset=(0.0, 0.30),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
@@ -593,20 +593,20 @@ class PnPCounterToMicrowave(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.distr_counter,
-                    sample_region_kwargs=dict(
-                        ref=self.microwave,
-                    ),
-                    size=(0.30, 0.30),
-                    pos=("ref", 1.0),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.distr_counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.microwave,
+        #             ),
+        #             size=(0.30, 0.30),
+        #             pos=("ref", 1.0),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
@@ -719,20 +719,20 @@ class PnPMicrowaveToCounter(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.distr_counter,
-                    sample_region_kwargs=dict(
-                        ref=self.microwave,
-                    ),
-                    size=(0.30, 0.30),
-                    pos=("ref", 1.0),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.distr_counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.microwave,
+        #             ),
+        #             size=(0.30, 0.30),
+        #             pos=("ref", 1.0),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
@@ -1092,34 +1092,34 @@ class PnPCounterToSink_with_distractions(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.sink,
-                        loc="left_right",
-                    ),
-                    size=(0.30, 0.30),
-                    pos=("ref", -1.0),
-                    offset=(0.0, 0.30),
-                ),
-            )
-        )
-        cfgs.append(
-            dict(
-                name="distr_sink",
-                obj_groups="all",
-                washable=True,
-                placement=dict(
-                    fixture=self.sink,
-                    size=(0.25, 0.25),
-                    pos=(0.0, 1.0),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.sink,
+        #                 loc="left_right",
+        #             ),
+        #             size=(0.30, 0.30),
+        #             pos=("ref", -1.0),
+        #             offset=(0.0, 0.30),
+        #         ),
+        #     )
+        # )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_sink",
+        #         obj_groups="all",
+        #         washable=True,
+        #         placement=dict(
+        #             fixture=self.sink,
+        #             size=(0.25, 0.25),
+        #             pos=(0.0, 1.0),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
