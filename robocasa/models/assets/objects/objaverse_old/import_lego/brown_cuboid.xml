@@ -1,0 +1,15 @@
+<mujoco model="cuboid_model">
+    <compiler angle="degree" meshdir="assets" coordinate="local" />
+    <option timestep="0.01" gravity="0 0 -9.81"/>
+
+    <asset>
+        <mesh name="cuboid_mesh" file="cuboid.stl"/>
+    </asset>
+
+    <worldbody>
+        <body name="cuboid_body" pos="0 0 0.1">
+            <geom name="cuboid_geom" type="mesh" mesh="cuboid_mesh"
+                  rgba="0.65 0.54 0.44 0.7" mass="0.1" />
+        </body>
+    </worldbody>
+</mujoco>

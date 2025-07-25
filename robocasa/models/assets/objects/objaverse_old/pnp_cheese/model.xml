@@ -1,0 +1,46 @@
+<mujoco model="pnp_cheese">
+    <compiler angle="degree" coordinate="local" />
+    <option timestep="0.01" gravity="0 0 -9.81"/>
+
+    <asset>
+        <mesh name="cheese_vis" file="visual/cheese.stl" scale="0.001 0.001 0.001" />
+        <mesh name="cheese_mesh" file="collision/cheese.stl" scale="0.001 0.001 0.001" />
+        <material name="mat" rgba="1 0.9 0.4 1" specular="0.0" shininess="0.0"/>
+    </asset>
+
+    <worldbody>
+        <body>
+            <body name="object" pos="0 0 0">
+                <geom solimp="0.998 0.998 0.001"
+                      solref="0.001 1"
+                      density="100"
+                      friction="0.6 0.2 0.1"
+                      type="mesh"
+                      mesh="cheese_vis"
+                      conaffinity="0"
+                      contype="0"
+                      group="1"
+                      material="mat" />
+                <geom name="cheese_geom"
+                      type="mesh"
+                      mesh="cheese_mesh"
+                      rgba="1 0.9 0.4 1"
+                      mass="0.2"
+                      group="0" />
+            </body>
+
+            <site rgba="0 0 0 0"
+                  size="0.005"
+                  pos="1.5e-09 0.0001579002 -0.03245274"
+                  name="bottom_site"/>
+            <site rgba="0 0 0 0"
+                  size="0.005"
+                  pos="1.5e-09 0.0001579002 0.03305049"
+                  name="top_site"/>
+            <site rgba="0 0 0 0"
+                  size="0.005"
+                  pos="0.0589176144 0.0575673768 0.000298875"
+                  name="horizontal_radius_site"/>
+        </body>
+    </worldbody>
+</mujoco>

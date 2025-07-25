@@ -7,6 +7,16 @@ import robocasa
 import robocasa.macros as macros
 
 SINGLE_STAGE_TASK_DATASETS = OrderedDict(
+    PnPCounterToCounter=dict(
+        horizon=500,
+        human_path="v0.1/single_stage/kitchen_pnp/PnPCounterToCab/2024-04-24",
+        mg_path="v0.1/single_stage/kitchen_pnp/PnPCounterToCab/mg/2024-05-04-22-12-27_and_2024-05-07-07-39-33",
+        download_links=dict(
+            human_raw="https://utexas.box.com/shared/static/c0a0vdyqeqh6o9z4c57sk61aypladizj.hdf5",
+            human_im="https://utexas.box.com/shared/static/gznii250ip99731ii2r0ml6be7gzt2cp.hdf5",
+            mg_im="https://utexas.box.com/shared/static/7y9csrcx6uhhq4p3yctmm2df3rjqpw6g.hdf5",
+        ),
+    ),
     PnPCounterToCab=dict(
         horizon=500,
         human_path="v0.1/single_stage/kitchen_pnp/PnPCounterToCab/2024-04-24",

@@ -340,8 +340,8 @@ if __name__ == "__main__":
         "--obj_groups",
         type=str,
         nargs="+",
-        default="brown_cuboid",
-        # default=None,
+        # default="brown_cuboid",
+        default=None,
         help="In kitchen environments, either the name of a group to sample object from or path to an .xml file",
     )
     #parser.add_argument("--allowed_instance", type=str, default=None)
