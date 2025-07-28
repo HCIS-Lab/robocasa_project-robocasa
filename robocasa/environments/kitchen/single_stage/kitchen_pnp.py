@@ -991,24 +991,6 @@ class PnPCounterToCounter(PnP):
             )
         )
 
-        # 增加障礙物
-        # cfgs.append(
-        #     dict(
-        #         name="distr_counter",
-        #         obj_groups="all",
-        #         placement=dict(
-        #             fixture=self.counter,
-        #             sample_region_kwargs=dict(
-        #                 ref=self.sink,
-        #                 loc="left_right",
-        #             ),
-        #             size=(0.30, 0.30),
-        #             pos=("ref", -1.0),
-        #             offset=(0.0, 0.30),
-        #         ),
-        #     )
-        # )
-
         return cfgs
 
     def _check_success(self):

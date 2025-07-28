@@ -1,0 +1,15 @@
+<mujoco model="cylinder_model">
+    <compiler angle="degree" meshdir="assets" coordinate="local" />
+    <option timestep="0.01" gravity="0 0 -9.81"/>
+
+    <asset>
+        <mesh name="cylinder_mesh" file="cylinder.stl"/>
+    </asset>
+
+    <worldbody>
+        <body name="cylinder_body" pos="0 0 0.1">
+            <geom name="cylinder_geom" type="mesh" mesh="cylinder_mesh"
+                  rgba="0.65 0.54 0.44 0.7" mass="0.1" />
+        </body>
+    </worldbody>
+</mujoco>

@@ -678,20 +678,7 @@ OBJ_CATEGORIES = dict(
         ),
         objaverse=dict(),
     ),
-    cup_2_only=dict(
-        types=("receptacle", "stackable"),
-        graspable=True,
-        washable=True,
-        microwavable=True,
-        cookable=False,
-        freezable=False,
-        aigen=dict(
-            scale=1.35,
-        ),
-         objaverse=dict(
-            model_folders=["objaverse/cup_2_only/cup_2"],
-         ),
-    ),
+    #change : single_egg先拿掉
     cupcake=dict(
         types=("sweets"),
         graspable=True,
@@ -2260,7 +2247,7 @@ OBJ_GROUPS["food"] = get_cats_by_type(
         "bread_food",
         "pastry",
         "cooked_food",
-        "lego",
+        #"lego",
     ]
 )
 OBJ_GROUPS["in_container"] = get_cats_by_type(
@@ -2274,6 +2261,17 @@ OBJ_GROUPS["in_container"] = get_cats_by_type(
         "pastry",
         "cooked_food",
         "lego",
+        "pnp_mug"
+        "pnp_banana",
+        "pnp_bell_pepper",
+        "pnp_bowl",
+        "pnp_can",
+        "pnp_cheese",
+        "pnp_cupcake",
+        "pnp_egg",
+        "pnp_pan",
+        "pnp_water_bottle",
+        #"single_egg"
     ]
 )
 
@@ -2293,6 +2291,7 @@ OBJ_GROUPS["food_set1"] = [
     "lemon",
     "orange",
     "potato",
+    #"single_egg"
 ]
 OBJ_GROUPS["group1"] = ["apple", "carrot", "banana", "bowl", "can"]
 OBJ_GROUPS["container_set2"] = ["plate", "bowl"]
@@ -2310,9 +2309,27 @@ OBJ_GROUPS["pnp_cheese"] = ["pnp_cheese"]
 OBJ_GROUPS["pnp_cupcake"] = ["pnp_cupcake"]
 OBJ_GROUPS["pnp_egg"] = ["pnp_egg"]
 OBJ_GROUPS["pnp_pan"] = ["pnp_pan"]
-OBJ_GROUPS["pnp_water_bottle"] = ["pnp_water_bottle"]
+OBJ_GROUPS["pnp_plastic_bottle"] = ["pnp_water_bottle"]
+
+#OBJ_GROUPS["single_egg"] = ["single_egg"]
 
 
 
 #OBJ_GROUPS["lego"] = ["brown_cuboid","red_cuboid", "brown_cylinder", "green_cylinder"]
 #OBJ_GROUPS["cup_2_only"] = ["cup_2_only"]
+"""
+    single_egg=dict(
+        types=("dairy"),
+        graspable=True,
+        washable=True,
+        microwavable=True,
+        cookable=True,
+        freezable=True,
+        aigen=dict(
+            scale=1.15,
+        ),
+        objaverse=dict(
+            scale=0.85,
+        ),
+    ),
+    """

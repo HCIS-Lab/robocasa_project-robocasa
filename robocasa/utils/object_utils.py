@@ -276,6 +276,12 @@ def objs_intersect(
         # noramlize length of normals
         for normal in face_normals:
             normal = np.array(normal) / np.linalg.norm(normal)
+            
+            if np.linalg.norm(normal) == 0:
+                print(f"[WARNING] Encountered zero or invalid normal vector during collision check.")
+                print(f"obj: {obj}")
+                print(f"other_obj: {other_obj}")
+            
 
             obj_projs = [np.dot(p, normal) for p in obj_points]
             other_obj_projs = [np.dot(p, normal) for p in other_obj_points]
