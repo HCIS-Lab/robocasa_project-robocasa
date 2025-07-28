@@ -2309,7 +2309,7 @@ OBJ_GROUPS["pnp_cheese"] = ["pnp_cheese"]
 OBJ_GROUPS["pnp_cupcake"] = ["pnp_cupcake"]
 OBJ_GROUPS["pnp_egg"] = ["pnp_egg"]
 OBJ_GROUPS["pnp_pan"] = ["pnp_pan"]
-OBJ_GROUPS["pnp_plastic_bottle"] = ["pnp_water_bottle"]
+OBJ_GROUPS["pnp_water_bottle"] = ["pnp_water_bottle"]
 
 #OBJ_GROUPS["single_egg"] = ["single_egg"]
 
@@ -2317,19 +2317,3 @@ OBJ_GROUPS["pnp_plastic_bottle"] = ["pnp_water_bottle"]
 
 #OBJ_GROUPS["lego"] = ["brown_cuboid","red_cuboid", "brown_cylinder", "green_cylinder"]
 #OBJ_GROUPS["cup_2_only"] = ["cup_2_only"]
-"""
-    single_egg=dict(
-        types=("dairy"),
-        graspable=True,
-        washable=True,
-        microwavable=True,
-        cookable=True,
-        freezable=True,
-        aigen=dict(
-            scale=1.15,
-        ),
-        objaverse=dict(
-            scale=0.85,
-        ),
-    ),
-    """
