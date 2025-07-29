@@ -2309,7 +2309,7 @@ OBJ_GROUPS["pnp_cheese"] = ["pnp_cheese"]
 OBJ_GROUPS["pnp_cupcake"] = ["pnp_cupcake"]
 OBJ_GROUPS["pnp_egg"] = ["pnp_egg"]
 OBJ_GROUPS["pnp_pan"] = ["pnp_pan"]
-OBJ_GROUPS["pnp_plastic_bottle"] = ["pnp_water_bottle"]
+OBJ_GROUPS["pnp_water_bottle"] = ["pnp_water_bottle"]
 
 #OBJ_GROUPS["single_egg"] = ["single_egg"]
 
