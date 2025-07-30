@@ -10,7 +10,7 @@
 
     <worldbody>
         <body>
-            <body name="object" pos="0 0 0">
+            <body name="object" pos="0 0 -0.015">
                 <geom solimp="0.998 0.998 0.001"
                       solref="0.001 1"
                       density="100"
