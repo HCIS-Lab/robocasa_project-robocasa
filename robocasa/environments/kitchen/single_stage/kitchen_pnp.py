@@ -325,7 +325,7 @@ class PnPCounterToSink(PnP):
                     fixture=self.counter,
                     sample_region_kwargs=dict(
                         ref=self.sink,
-                        loc="left_right",
+                        loc="right",
                     ),
                     size=(0.30, 0.40),
                     pos=("ref", -1.0),
@@ -334,34 +334,34 @@ class PnPCounterToSink(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.sink,
-                        loc="left_right",
-                    ),
-                    size=(0.30, 0.30),
-                    pos=("ref", -1.0),
-                    offset=(0.0, 0.30),
-                ),
-            )
-        )
-        cfgs.append(
-            dict(
-                name="distr_sink",
-                obj_groups="all",
-                washable=True,
-                placement=dict(
-                    fixture=self.sink,
-                    size=(0.25, 0.25),
-                    pos=(0.0, 1.0),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.sink,
+        #                 loc="left_right",
+        #             ),
+        #             size=(0.30, 0.30),
+        #             pos=("ref", -1.0),
+        #             offset=(0.0, 0.30),
+        #         ),
+        #     )
+        # )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_sink",
+        #         obj_groups="all",
+        #         washable=True,
+        #         placement=dict(
+        #             fixture=self.sink,
+        #             size=(0.25, 0.25),
+        #             pos=(0.0, 1.0),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
@@ -469,22 +469,22 @@ class PnPSinkToCounter(PnP):
         )
 
         # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.sink,
-                        loc="left_right",
-                    ),
-                    size=(0.30, 0.30),
-                    pos=("ref", -1.0),
-                    offset=(0.0, 0.30),
-                ),
-            )
-        )
+        # cfgs.append(
+        #     dict(
+        #         name="distr_counter",
+        #         obj_groups="all",
+        #         placement=dict(
+        #             fixture=self.counter,
+        #             sample_region_kwargs=dict(
+        #                 ref=self.sink,
+        #                 loc="left_right",
+        #             ),
+        #             size=(0.30, 0.30),
+        #             pos=("ref", -1.0),
+        #             offset=(0.0, 0.30),
+        #         ),
+        #     )
+        # )
 
         return cfgs
 
@@ -950,7 +950,8 @@ class PnPCounterToCounter(PnP):
             dict(id=FixtureType.SINK),
         )
         self.counter = self.register_fixture_ref(
-            "counter", dict(id=FixtureType.COUNTER, ref=self.sink, size=[0.30, 0.40])
+            "counter",
+            dict(id=FixtureType.COUNTER, ref=self.sink),
         )
         self.init_robot_base_pos = self.counter
 
@@ -961,9 +962,10 @@ class PnPCounterToCounter(PnP):
         """
         ep_meta = super().get_ep_meta()
         obj_lang = self.get_obj_lang()
+
         ep_meta[
             "lang"
-        ] = f"Pick the {obj_lang} from the plate and place it on the counter. \nIf the demo does not end, remember to move the robot arm further away"
+        ] = f"Pick the {obj_lang} from the counter and place it on the plate. \nIf the demo does not end, remember to move the robot arm further away"
         
         return ep_meta
 
@@ -981,12 +983,29 @@ class PnPCounterToCounter(PnP):
                 obj_groups=self.obj_groups,
                 exclude_obj_groups=self.exclude_obj_groups,
                 graspable=True,
-                max_size=(0.15, 0.15, None),
+                washable=True,
                 placement=dict(
                     fixture=self.counter,
-                    size=(0.05, 0.05),
-                    ensure_object_boundary_in_range=False,
-                    try_to_place_in="container",
+                    sample_region_kwargs=dict(
+                        ref=self.counter,
+                    ),
+                    size=(0.25, 0.25),
+                    pos=("ref", -1.0),
+                ),
+            )
+        )
+        cfgs.append(
+            dict(
+                name="container",
+                obj_groups="container",
+                placement=dict(
+                    fixture=self.counter,
+                    sample_region_kwargs=dict(
+                        ref=self.sink,
+                        loc="right",
+                    ),
+                    size=(0.35, 0.40),
+                    pos=("ref", -1.0),
                 ),
             )
         )
@@ -1001,223 +1020,8 @@ class PnPCounterToCounter(PnP):
         Returns:
             bool: True if the task is successful, False otherwise
         """
+        obj_in_recep = OU.check_obj_in_receptacle(self, "obj", "container")
+        recep_on_counter = self.check_contact(self.objects["container"], self.counter)
         gripper_obj_far = OU.gripper_obj_far(self)
-        obj_on_counter = OU.check_obj_fixture_contact(self, "obj", self.counter)
-        return obj_on_counter and gripper_obj_far
+        return obj_in_recep and recep_on_counter and gripper_obj_far
     
-
-
-class PnPCounterToSink_with_distractions(PnP):
-    """
-    Class encapsulating the atomic counter to sink pick and place task
-
-    Args:
-        obj_groups (str): Object groups to sample the target object from.
-    """
-
-    def __init__(self, obj_groups="all", *args, **kwargs):
-
-        super().__init__(obj_groups=obj_groups, *args, **kwargs)
-
-    def _setup_kitchen_references(self):
-        """
-        Setup the kitchen references for the counter to sink pick and place task:
-        The sink to place object in and the counter to initialize it on
-        """
-        super()._setup_kitchen_references()
-        self.sink = self.register_fixture_ref(
-            "sink",
-            dict(id=FixtureType.SINK),
-        )
-        self.counter = self.register_fixture_ref(
-            "counter",
-            dict(id=FixtureType.COUNTER, ref=self.sink),
-        )
-        self.init_robot_base_pos = self.sink
-
-    def get_ep_meta(self):
-        """
-        Get the episode metadata for the counter to sink pick and place task.
-        This includes the language description of the task.
-        """
-        ep_meta = super().get_ep_meta()
-        obj_lang = self.get_obj_lang()
-        ep_meta[
-            "lang"
-        ] = f"pick the {obj_lang} from the counter and place it in the sink"
-        return ep_meta
-
-    def _get_obj_cfgs(self):
-        """
-        Get the object configurations for the counter to sink pick and place task.
-        Puts the target object in the front area of the counter. Puts a distractor object on the counter
-        and the sink.
-        """
-        cfgs = []
-        cfgs.append(
-            dict(
-                name="obj",
-                obj_groups=self.obj_groups,
-                exclude_obj_groups=self.exclude_obj_groups,
-                graspable=True,
-                washable=True,
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.sink,
-                        loc="left_right",
-                    ),
-                    size=(0.30, 0.40),
-                    pos=("ref", -1.0),
-                ),
-            )
-        )
-
-        # distractors
-        cfgs.append(
-            dict(
-                name="distr_counter",
-                obj_groups="all",
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.sink,
-                        loc="left_right",
-                    ),
-                    size=(0.30, 0.30),
-                    pos=("ref", -1.0),
-                    offset=(0.0, 0.30),
-                ),
-            )
-        )
-        cfgs.append(
-            dict(
-                name="distr_sink",
-                obj_groups="all",
-                washable=True,
-                placement=dict(
-                    fixture=self.sink,
-                    size=(0.25, 0.25),
-                    pos=(0.0, 1.0),
-                ),
-            )
-        )
-
-        return cfgs
-
-    def check_pick(self):
-        """
-        Check if the pick action is valid for the counter to sink pick and place task.
-        Checks if the object is on the counter and the gripper is far from the object.
-
-        Returns:
-            bool: True if the pick action is valid, False otherwise
-        """
-        obj_on_counter = OU.check_obj_fixture_contact(self, "obj", self.counter)
-        gripper_obj_far = OU.gripper_obj_far(self)
-        return obj_on_counter and gripper_obj_far
-
-    def _check_success(self):
-        """
-        Check if the counter to sink pick and place task is successful.
-        Checks if the object is inside the sink and the gripper is far from the object.
-
-        Returns:
-            bool: True if the task is successful, False otherwise
-        """
-        obj_in_sink = OU.obj_inside_of(self, "obj", self.sink, partial_check=True)
-        gripper_obj_far = OU.gripper_obj_far(self)
-        return obj_in_sink and gripper_obj_far
-    
-
-class PnPCounterToSink_without_distractions(PnP):
-    """
-    Class encapsulating the atomic counter to sink pick and place task
-
-    Args:
-        obj_groups (str): Object groups to sample the target object from.
-    """
-
-    def __init__(self, obj_groups="all", *args, **kwargs):
-
-        super().__init__(obj_groups=obj_groups, *args, **kwargs)
-
-    def _setup_kitchen_references(self):
-        """
-        Setup the kitchen references for the counter to sink pick and place task:
-        The sink to place object in and the counter to initialize it on
-        """
-        super()._setup_kitchen_references()
-        self.sink = self.register_fixture_ref(
-            "sink",
-            dict(id=FixtureType.SINK),
-        )
-        self.counter = self.register_fixture_ref(
-            "counter",
-            dict(id=FixtureType.COUNTER, ref=self.sink),
-        )
-        self.init_robot_base_pos = self.sink
-
-    def get_ep_meta(self):
-        """
-        Get the episode metadata for the counter to sink pick and place task.
-        This includes the language description of the task.
-        """
-        ep_meta = super().get_ep_meta()
-        obj_lang = self.get_obj_lang()
-        ep_meta[
-            "lang"
-        ] = f"pick the {obj_lang} from the counter and place it in the sink"
-        return ep_meta
-
-    def _get_obj_cfgs(self):
-        """
-        Get the object configurations for the counter to sink pick and place task.
-        Puts the target object in the front area of the counter. Puts a distractor object on the counter
-        and the sink.
-        """
-        cfgs = []
-        cfgs.append(
-            dict(
-                name="obj",
-                obj_groups=self.obj_groups,
-                exclude_obj_groups=self.exclude_obj_groups,
-                graspable=True,
-                washable=True,
-                placement=dict(
-                    fixture=self.counter,
-                    sample_region_kwargs=dict(
-                        ref=self.sink,
-                        loc="left_right",
-                    ),
-                    size=(0.30, 0.40),
-                    pos=("ref", -1.0),
-                ),
-            )
-        )
-
-        return cfgs
-
-    def check_pick(self):
-        """
-        Check if the pick action is valid for the counter to sink pick and place task.
-        Checks if the object is on the counter and the gripper is far from the object.
-
-        Returns:
-            bool: True if the pick action is valid, False otherwise
-        """
-        obj_on_counter = OU.check_obj_fixture_contact(self, "obj", self.counter)
-        gripper_obj_far = OU.gripper_obj_far(self)
-        return obj_on_counter and gripper_obj_far
-
-    def _check_success(self):
-        """
-        Check if the counter to sink pick and place task is successful.
-        Checks if the object is inside the sink and the gripper is far from the object.
-
-        Returns:
-            bool: True if the task is successful, False otherwise
-        """
-        obj_in_sink = OU.obj_inside_of(self, "obj", self.sink, partial_check=True)
-        gripper_obj_far = OU.gripper_obj_far(self)
-        return obj_in_sink and gripper_obj_far

@@ -67,7 +67,7 @@ _ROBOT_POS_OFFSETS: dict[str, list[float]] = {
     "G1": [0, -0.33, 0],
     "G1FixedLowerBody": [0, -0.33, 0],
     "GoogleRobot": [0, 0, 0],
-    "PandaOmron": [0.5, -0.5, 0.0],
+    "PandaOmron": [0.5, -0.3, 0.0],
 }
 
 

@@ -3,8 +3,8 @@
     <option timestep="0.01" gravity="0 0 -9.81"/>
 
     <asset>
-        <mesh name="can_vis" file="visual/can.stl" scale="0.001 0.001 0.001" />
-        <mesh name="can_mesh" file="collision/can.stl" scale="0.001 0.001 0.001" />
+        <mesh name="can_vis" file="visual/can.stl" scale="0.0008 0.0008 0.0008" />
+        <mesh name="can_mesh" file="collision/can.stl" scale="0.0008 0.0008 0.0008" />
         <material name="mat" rgba="0.8 0.8 0.8 1" specular="0.0" shininess="0.0"/>
     </asset>
 

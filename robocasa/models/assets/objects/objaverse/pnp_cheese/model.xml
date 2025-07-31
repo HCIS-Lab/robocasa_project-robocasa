@@ -1,46 +1,113 @@
-<mujoco model="pnp_cheese">
-    <compiler angle="degree" coordinate="local" />
-    <option timestep="0.01" gravity="0 0 -9.81"/>
-
-    <asset>
-        <mesh name="cheese_vis" file="visual/cheese.stl" scale="0.01 0.01 0.01" />
-        <mesh name="cheese_mesh" file="collision/cheese.stl" scale="0.01 0.01 0.01" />
-        <material name="mat" rgba="1 0.9 0.4 1" specular="0.0" shininess="0.0"/>
-    </asset>
-
-    <worldbody>
-        <body>
-            <body name="object" pos="0 0 0">
-                <geom solimp="0.998 0.998 0.001"
-                      solref="0.001 1"
-                      density="100"
-                      friction="0.6 0.2 0.1"
-                      type="mesh"
-                      mesh="cheese_vis"
-                      conaffinity="0"
-                      contype="0"
-                      group="1"
-                      material="mat" />
-                <geom name="cheese_geom"
-                      type="mesh"
-                      mesh="cheese_mesh"
-                      rgba="1 0.9 0.4 1"
-                      mass="0.2"
-                      group="0" />
-            </body>
-
-            <site rgba="0 0 0 0"
-                  size="0.005"
-                  pos="1.5e-09 0.0001579002 -0.03245274"
-                  name="bottom_site"/>
-            <site rgba="0 0 0 0"
-                  size="0.005"
-                  pos="1.5e-09 0.0001579002 0.03305049"
-                  name="top_site"/>
-            <site rgba="0 0 0 0"
-                  size="0.005"
-                  pos="0.0589176144 0.0575673768 0.000298875"
-                  name="horizontal_radius_site"/>
-        </body>
-    </worldbody>
+<mujoco model="cheese">
+  <asset>
+    <mesh file="visual/cheese.obj" name="cheese_vis" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_0.obj"  name="cheese_coll_0" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_1.obj"  name="cheese_coll_1" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_2.obj"  name="cheese_coll_2" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_3.obj"  name="cheese_coll_3" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_4.obj"  name="cheese_coll_4" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_5.obj"  name="cheese_coll_5" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_6.obj"  name="cheese_coll_6" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_7.obj"  name="cheese_coll_7" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_8.obj"  name="cheese_coll_8" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_9.obj"  name="cheese_coll_9" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_10.obj" name="cheese_coll_10" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_11.obj" name="cheese_coll_11" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_12.obj" name="cheese_coll_12" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_13.obj" name="cheese_coll_13" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_14.obj" name="cheese_coll_14" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_15.obj" name="cheese_coll_15" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_16.obj" name="cheese_coll_16" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_17.obj" name="cheese_coll_17" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_18.obj" name="cheese_coll_18" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_19.obj" name="cheese_coll_19" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_20.obj" name="cheese_coll_20" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_21.obj" name="cheese_coll_21" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_22.obj" name="cheese_coll_22" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_23.obj" name="cheese_coll_23" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_24.obj" name="cheese_coll_24" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_25.obj" name="cheese_coll_25" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_26.obj" name="cheese_coll_26" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_27.obj" name="cheese_coll_27" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_28.obj" name="cheese_coll_28" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_29.obj" name="cheese_coll_29" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_30.obj" name="cheese_coll_30" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <mesh file="collision/cheese_collision_31.obj" name="cheese_coll_31" scale="0.002 0.002 0.002" refquat="0.6830127 -0.6830127 -0.1830127 -0.1830127"/>
+    <material name="mat_cheese" rgba="1 0.9 0.4 1" specular="0" shininess="0"/>
+  </asset>
+  <worldbody>
+    <body>
+      <body name="object" pos="0 0 0">
+        <geom type="mesh" mesh="cheese_vis" material="mat_cheese"
+              contype="0" conaffinity="0" group="1"/>
+        <geom type="mesh" mesh="cheese_coll_0"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_1"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_2"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_3"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_4"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_5"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_6"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_7"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_8"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_9"  group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_10" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_11" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_12" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_13" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_14" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_15" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_16" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_17" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_18" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_19" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_20" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_21" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_22" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_23" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_24" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_25" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_26" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_27" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_28" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_29" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_30" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+        <geom type="mesh" mesh="cheese_coll_31" group="0" rgba="0.8 0.8 0.8 0"
+              friction="0.95 0.3 0.1" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+      </body>
+      <site rgba="0 0 0 0" size="0.005" pos="1.5e-09 0.0001579002 -0.03245274" name="bottom_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="1.5e-09 0.0001579002 0.03305049" name="top_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0.0589176144 0.0575673768 0.000298875" name="horizontal_radius_site"/>
+    </body>
+  </worldbody>
 </mujoco>
