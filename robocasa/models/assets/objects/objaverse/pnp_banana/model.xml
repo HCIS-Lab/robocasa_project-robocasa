@@ -1,6 +1,6 @@
 <mujoco model="pnp_banana">
     <compiler angle="degree" coordinate="local" />
-    <option timestep="0.01" gravity="0 0 -9.81"/>
+    <option timestep="0.01" gravity="0 0 -9.81" density="1000" angularDamping="1"/>
 
     <asset>
         <mesh name="banana_vis" file="visual/banana.stl" scale="0.001 0.001 0.001" />
@@ -26,7 +26,8 @@
                       mesh="banana_mesh"
                       rgba="0.9 0.8 0.6 1"
                       mass="0.5"
-                      group="0" />
+                      group="0"
+                      friction="0.8 0.3 0.1" />
             </body>
             <site rgba="0 0 0 0" size="0.005" pos="1.8000000023832283e-09 0.0001579002000000018 -0.03245274" name="bottom_site"/>
             <site rgba="0 0 0 0" size="0.005" pos="1.8000000023832283e-09 0.0001579002000000018 0.033050489999999995" name="top_site"/>
