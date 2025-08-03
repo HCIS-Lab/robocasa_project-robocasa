@@ -958,7 +958,7 @@ class PnPCounterToCounter(PnP):
                     sample_region_kwargs=dict(
                         ref=self.counter,
                     ),
-                    size=(0.3, 0.15),
+                    size=(0.3, 0.2),
                     pos=("ref", -1.0),
                 ),
             )

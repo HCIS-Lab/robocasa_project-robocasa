@@ -1137,6 +1137,21 @@ OBJ_CATEGORIES = dict(
             ],
         ),
     ),
+    single_plate=dict(
+        types=("receptacle"),
+        graspable=False,
+        washable=True,
+        microwavable=True,
+        cookable=False,
+        freezable=False,
+        aigen=dict(
+            scale=1.65,
+        ),
+        objaverse=dict(
+            model_folders=["objaverse/single_plate"],
+            scale=1.35
+        ),
+    ),
     potato=dict(
         types=("vegetable"),
         graspable=True,
@@ -2277,7 +2292,7 @@ OBJ_GROUPS["in_container"] = get_cats_by_type(
 )
 
 # custom groups
-OBJ_GROUPS["container"] = ["plate"]  # , "bowl"]
+OBJ_GROUPS["container"] = ["single_plate"]  # , "bowl"]
 OBJ_GROUPS["kettle"] = ["kettle_electric", "kettle_non_electric"]
 OBJ_GROUPS["cookware"] = ["pan", "pot", "kettle_non_electric"]
 OBJ_GROUPS["pots_and_pans"] = ["pan", "pot"]
@@ -2295,7 +2310,7 @@ OBJ_GROUPS["food_set1"] = [
     #"single_egg"
 ]
 OBJ_GROUPS["group1"] = ["apple", "carrot", "banana", "bowl", "can"]
-OBJ_GROUPS["container_set2"] = ["plate", "bowl"]
+OBJ_GROUPS["container_set2"] = ["single_plate", "bowl"]
 
 OBJ_GROUPS["brown_cuboid"] = ["brown_cuboid"]
 OBJ_GROUPS["brown_cylinder"] = ["brown_cylinder"]
@@ -2312,7 +2327,7 @@ OBJ_GROUPS["pnp_egg"] = ["pnp_egg"]
 OBJ_GROUPS["pnp_pan"] = ["pnp_pan"]
 OBJ_GROUPS["pnp_water_bottle"] = ["pnp_water_bottle"]
 
-#OBJ_GROUPS["single_egg"] = ["single_egg"]
+OBJ_GROUPS["single_plate"] = ["single_plate"]
 
 
 
