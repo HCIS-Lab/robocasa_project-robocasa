@@ -327,41 +327,11 @@ class PnPCounterToSink(PnP):
                         ref=self.sink,
                         loc="right",
                     ),
-                    size=(0.30, 0.40),
-                    pos=("ref", -1.0),
+                    size=(0.30, 0.0),
+                    pos=("ref", -0.7),
                 ),
             )
         )
-
-        # distractors
-        # cfgs.append(
-        #     dict(
-        #         name="distr_counter",
-        #         obj_groups="all",
-        #         placement=dict(
-        #             fixture=self.counter,
-        #             sample_region_kwargs=dict(
-        #                 ref=self.sink,
-        #                 loc="left_right",
-        #             ),
-        #             size=(0.30, 0.30),
-        #             pos=("ref", -1.0),
-        #             offset=(0.0, 0.30),
-        #         ),
-        #     )
-        # )
-        # cfgs.append(
-        #     dict(
-        #         name="distr_sink",
-        #         obj_groups="all",
-        #         washable=True,
-        #         placement=dict(
-        #             fixture=self.sink,
-        #             size=(0.25, 0.25),
-        #             pos=(0.0, 1.0),
-        #         ),
-        #     )
-        # )
 
         return cfgs
 
@@ -386,8 +356,7 @@ class PnPCounterToSink(PnP):
             bool: True if the task is successful, False otherwise
         """
         obj_in_sink = OU.obj_inside_of(self, "obj", self.sink, partial_check=True)
-        gripper_obj_far = OU.gripper_obj_far(self)
-        return obj_in_sink and gripper_obj_far
+        return obj_in_sink 
 
 
 class PnPSinkToCounter(PnP):
@@ -989,7 +958,7 @@ class PnPCounterToCounter(PnP):
                     sample_region_kwargs=dict(
                         ref=self.counter,
                     ),
-                    size=(0.25, 0.25),
+                    size=(0.3, 0.15),
                     pos=("ref", -1.0),
                 ),
             )
@@ -1004,7 +973,7 @@ class PnPCounterToCounter(PnP):
                         ref=self.sink,
                         loc="right",
                     ),
-                    size=(0.35, 0.40),
+                    size=(0.5, 0.3),
                     pos=("ref", -1.0),
                 ),
             )
@@ -1022,6 +991,5 @@ class PnPCounterToCounter(PnP):
         """
         obj_in_recep = OU.check_obj_in_receptacle(self, "obj", "container")
         recep_on_counter = self.check_contact(self.objects["container"], self.counter)
-        gripper_obj_far = OU.gripper_obj_far(self)
-        return obj_in_recep and recep_on_counter and gripper_obj_far
+        return obj_in_recep and recep_on_counter
     

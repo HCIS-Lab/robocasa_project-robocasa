@@ -1130,6 +1130,7 @@ OBJ_CATEGORIES = dict(
             scale=1.65,
         ),
         objaverse=dict(
+            model_folders=["objaverse/plate/plate_4"],
             scale=1.35,
             exclude=[
                 "plate_6",  # causing error: faces of mesh have inconsistent orientation.

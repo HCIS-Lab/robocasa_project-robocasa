@@ -67,7 +67,8 @@ _ROBOT_POS_OFFSETS: dict[str, list[float]] = {
     "G1": [0, -0.33, 0],
     "G1FixedLowerBody": [0, -0.33, 0],
     "GoogleRobot": [0, 0, 0],
-    "PandaOmron": [0.5, -0.3, 0.0],
+    # changed
+    "PandaOmron": [0.4, -0.15, 0.0],
 }
 
 
@@ -271,7 +272,7 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
         assert generative_textures in [None, False, "100p"]
         self.generative_textures = generative_textures
 
-        self.use_distractors = use_distractors
+        self.use_distractors = False
         self.translucent_robot = translucent_robot
         self.randomize_cameras = randomize_cameras
 
@@ -385,7 +386,9 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
             self.renderer_config = {"cam_config": camera_config}
 
         # setup fixtures
+        # changed
         self.fixture_cfgs = self.mujoco_arena.get_fixture_cfgs()
+        self.fixture_cfgs = self.fixture_cfgs[:-4]
         self.fixtures = {cfg["name"]: cfg["model"] for cfg in self.fixture_cfgs}
 
         # setup scene, robots, objects
@@ -546,7 +549,10 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
                     )
 
             # prepend the new object configs in
+            # changed
+            # self.object_cfgs = self._get_obj_cfgs()
             self.object_cfgs = addl_obj_cfgs + self.object_cfgs
+            # self.object_cfgs = [self.object_cfgs[0]]
 
             # # remove objects that didn't get created
             # self.object_cfgs = [cfg for cfg in self.object_cfgs if "model" in cfg]
@@ -574,7 +580,9 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
         
         if cfg.get("type", "") == "cup":
             cfg["pos"] = [0.2, -0.2, 0.83]
-        
+
+        #fix object
+        # changed
         object_kwargs, object_info = self.sample_object(
             obj_groups,
             exclude_groups=exclude_obj_groups,
@@ -587,6 +595,28 @@ class Kitchen(ManipulationEnv, metaclass=KitchenEnvMeta):
             object_scale=cfg.get("object_scale", None),
             pos=cfg.get("pos", None),
         )
+
+        object_kwargs['solimp'] = (0.998, 0.998, 0.001)
+        object_kwargs['solref'] = (0.001, 2)
+        object_info['split'] = 'A'
+
+        # object_kwargs = {
+        #     'scale': 1.0, 
+        #     'solimp': (0.998, 0.998, 0.001), 
+        #     'solref': (0.001, 2), 
+        #     'density': 100, 
+        #     'friction': (0.95, 0.3, 0.1), 
+        #     'priority': None, 
+        #     'mjcf_path': '/workspace/robocasa/robocasa/models/assets/objects/objaverse/cup/cup_2/model.xml'
+        # }
+        # object_info = {
+        #     'groups_containing_sampled_obj': ['all', 'cup', 'receptacle', 'stackable'], 
+        #     'groups': ['cup'], 
+        #     'cat': 'cup', 
+        #     'split': 'A', 
+        #     'mjcf_path': '/workspace/robocasa/robocasa/models/assets/objects/objaverse/cup/cup_2/model.xml'
+        # }
+        
         info = object_info
 
         object = MJCFObject(name=cfg["name"], **object_kwargs)
