@@ -674,6 +674,7 @@ OBJ_CATEGORIES = dict(
         cookable=False,
         freezable=False,
         aigen=dict(
+            model_folders=["objaverse/cup/cup_2"],
             scale=1.35,
         ),
         objaverse=dict(),
@@ -742,6 +743,7 @@ OBJ_CATEGORIES = dict(
             scale=1.15,
         ),
         objaverse=dict(
+            model_folders=["objaverse/egg/egg_0"],
             scale=0.85,
         ),
     ),
