@@ -110,7 +110,8 @@ if __name__ == "__main__":
             task = args.task
         video_num += 1
 
-        dataset = get_ds_path(task, ds_type="human_raw")
+        dataset = "/workspace/checkpoint_submission/hdf5/phase2_can.hdf5"
+        # dataset = get_ds_path(task, ds_type="human_raw")
 
         if os.path.exists(dataset) is False:
             # download dataset files
